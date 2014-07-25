@@ -220,7 +220,7 @@ namespace BigData.Server.DataAccessHelper.MongoDb
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		private object ConvertToSystemObject(BsonValue value)
+		private static object ConvertToSystemObject(BsonValue value)
 		{
 			switch (value.BsonType) {
 				case BsonType.Boolean: return value.AsBoolean;
