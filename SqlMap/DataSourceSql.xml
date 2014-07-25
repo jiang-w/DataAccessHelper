@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap>
+  <statements>
+    <select id="GetDataSourceById">
+      <![CDATA[SELECT a.obj_id,
+                      b.db_name,
+                      c.sql_clause,
+                      c.param_dft_val,
+                      c.ds_eng_name,
+                      c.ds_typ
+                FROM dsk_obj a
+                LEFT JOIN dsk_db_cfg b
+                  ON a.db_name = b.db_name
+                LEFT JOIN dsk_data_sour_def c
+                  ON a.obj_id = c.obj_id
+                  AND nvl(b.db_typ, ${dbTyp}) = c.db_typ
+                WHERE a.obj_id = ${id}
+      ]]>
+    </select>
+
+    <select id="GetDataSourceByName">
+      <![CDATA[SELECT a.obj_id,
+                      b.db_name,
+                      c.sql_clause,
+                      c.param_dft_val,
+                      c.ds_eng_name,
+                      c.ds_typ
+                FROM dsk_obj a
+                LEFT JOIN dsk_db_cfg b
+                  ON a.db_name = b.db_name
+                LEFT JOIN dsk_data_sour_def c
+                  ON a.obj_id = c.obj_id
+                  AND nvl(b.db_typ, ${dbTyp}) = c.db_typ
+                WHERE c.ds_eng_name = ${name}
+      ]]>
+    </select>
+  </statements>
+</sqlMap>

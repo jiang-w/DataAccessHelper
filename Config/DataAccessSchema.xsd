@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="dataAccessConfig">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="databaseConfig" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="providers" type="xs:string" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="sqlMapDirectory" type="xs:string" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="connections">
+                <xs:complexType>
+                  <xs:group ref="dbConnectionGroup" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mongoDBConfig" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="connections">
+                <xs:complexType>
+                  <xs:group ref="mongoConnectionGroup" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:group name="dbConnectionGroup">
+    <xs:sequence>
+      <xs:element name="connection">
+        <xs:complexType>
+          <xs:attribute name="name" type="xs:string" use="required"/>
+          <xs:attribute name="connectionString" type="xs:string" use="required"/>
+          <xs:attribute name="dbType" use="required">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="SQLServer"/>
+                <xs:enumeration value="Oracle"/>
+                <xs:enumeration value="MySql"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="provide" type="xs:string" use="required"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:group name="mongoConnectionGroup">
+    <xs:sequence>
+      <xs:element name="connection">
+        <xs:complexType>
+          <xs:attribute name="name" type="xs:string" use="required"/>
+          <xs:attribute name="server" type="xs:string" use="required"/>
+          <xs:attribute name="port" type="xs:integer"/>
+          <xs:attribute name="database" type="xs:string"/>
+          <xs:attribute name="collection" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+
+</xs:schema>

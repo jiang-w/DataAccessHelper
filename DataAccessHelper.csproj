@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E444A793-BEBE-42C5-B823-8BD72DFFDF16}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BigData.Server.DataAccessHelper</RootNamespace>
+    <AssemblyName>BigData.Server.DataAccessHelper</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ElasticSearch.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Reference\ElasticSearch.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=1.7.0.4714, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Reference\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=1.7.0.4714, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Reference\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Reference\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\ApplicationPath.cs" />
+    <Compile Include="Configuration\ConfigWatcher.cs" />
+    <Compile Include="Configuration\DataAccessConfig.cs" />
+    <Compile Include="Database\SqlMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\DatabaseAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\DatabaseConnection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\DatabaseParameter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\DbProvider.cs" />
+    <Compile Include="Database\EnumType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\IDbProvider.cs" />
+    <Compile Include="Database\IQueryExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ProviderDeserializer.cs" />
+    <Compile Include="Database\SqlBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\SqlFields.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataEntity\DataEntityHelper.cs" />
+    <Compile Include="DataEntity\DbFieldInfo.cs" />
+    <Compile Include="DataEntity\DbTableInfo.cs" />
+    <Compile Include="DataEntity\EntityBase.cs" />
+    <Compile Include="DataEntity\EnumType.cs" />
+    <Compile Include="DataEntity\FieldPropertyAttribute.cs" />
+    <Compile Include="DataEntity\FieldValueAttribute.cs" />
+    <Compile Include="DataEntity\IgnoreUpdateAttribute.cs" />
+    <Compile Include="DataEntity\TablePropertyAttribute.cs" />
+    <Compile Include="DataSource\DataSourceAccess.cs" />
+    <Compile Include="DataSource\DataSourceFunction.cs" />
+    <Compile Include="DataSource\DataSourceObject.cs" />
+    <Compile Include="DataSource\DsAccesser.cs" />
+    <Compile Include="DataSource\DsAccesserFactory.cs" />
+    <Compile Include="DataSource\DsDbConnConfig.cs" />
+    <Compile Include="DataSource\DsDatabaseAccesser.cs" />
+    <Compile Include="DataSource\DsMongoAccesser.cs" />
+    <Compile Include="DataSource\DsParameter.cs" />
+    <Compile Include="ElasticSearch\ElasticSearchAccess.cs" />
+    <Compile Include="ElasticSearch\ElasticSearchFields.cs" />
+    <Compile Include="ElasticSearch\ElasticSearchFilter.cs" />
+    <Compile Include="ElasticSearch\ElasticSearchSort.cs" />
+    <Compile Include="ElasticSearch\IQueryExtensions.cs" />
+    <Compile Include="Index\IdxAccesser.cs" />
+    <Compile Include="Index\IdxAccesserFactory.cs" />
+    <Compile Include="Index\IdxMongoAccesser.cs" />
+    <Compile Include="Index\IdxParameter.cs" />
+    <Compile Include="Index\IndexDataAccess.cs" />
+    <Compile Include="Index\IndexObject.cs" />
+    <Compile Include="MongoDb\IQueryExtensions.cs" />
+    <Compile Include="MongoDb\MongoDBAccess.cs" />
+    <Compile Include="MongoDb\MongoDBConnection.cs" />
+    <Compile Include="MongoDb\MongoDBFields.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MongoDb\MongoDBFilter.cs" />
+    <Compile Include="MongoDb\MongoDBSort.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\EnumType.cs" />
+    <Compile Include="Utility\SortBuilder.cs" />
+    <Compile Include="Utility\SortField.cs" />
+    <Compile Include="Utility\FieldQuery.cs" />
+    <Compile Include="Utility\UQuery.cs" />
+    <Compile Include="Utility\RelationQuery.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\DataAccess.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Config\DataAccessSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Config\ElasticSearch.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\providers.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlMap\DataSourceSql.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
