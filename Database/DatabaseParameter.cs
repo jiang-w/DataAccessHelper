@@ -13,7 +13,7 @@ namespace BigData.Server.DataAccessHelper.Database
 		public DatabaseParameter(string parameterName, object value)
 		{
 			this.ParameterName = parameterName;
-			this.Value = value;
+			this.Value = value ?? DBNull.Value;
 			this.Direction = ParameterDirection.Input;
 
 			switch (Type.GetTypeCode(value.GetType())) {
