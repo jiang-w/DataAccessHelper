@@ -16,7 +16,7 @@ namespace BigData.Server.DataAccessHelper.Database
 			this.Value = value ?? DBNull.Value;
 			this.Direction = ParameterDirection.Input;
 
-			switch (Type.GetTypeCode(value.GetType())) {
+			switch (Type.GetTypeCode(this.Value.GetType())) {
 				case TypeCode.Boolean:
 					this.DbType = DbType.Boolean;
 					break;
